@@ -43,11 +43,11 @@ pair = {
 22 => ["P", "P", "P", "P", "P", "P", "P", "P", "P", "P"]}
 
 puts "My advice for your hand will be:
-H =	Hit
-S	= Stand
-P	= Split
-Dh= Double if possible, otherwise Hit
-Ds= Double if possible, otherwise Stand"
+*  H = Hit
+*  S = Stand
+*  P = Split
+* Dh = Double if possible, otherwise Hit
+* Ds = Double if possible, otherwise Stand"
 puts ""
 puts "User, enter the value of your first card. Enter 10 for Jack, Queen, or King. Enter A for Ace. "
   first = gets.chomp
@@ -86,19 +86,17 @@ end
 total = first + second
 
 #puts istherea
-puts dealer
-puts total
+#puts dealer
+#puts total
 
-index = total - 2
-
-if istherea[0] == istherea[1]
-  answer = pair[dealer][total(index)]
+if istherea[0] == istherea[1] && istherea.include?("A")
+  answer = pair[total][dealer - 2]
   puts answer
-elsif
-  istherea.include?("A")
-  answer = soft[dealer][total(index)]
+elsif istherea.include?("A")
+  answer = soft[total][dealer - 2]
+  puts answer
+elsif !istherea.include?("A")
+  answer = hard[total][dealer - 2]
   puts answer
 else
-  answer = hard[dealer][total(index)]
-  puts answer
 end
